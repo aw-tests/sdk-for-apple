@@ -25,6 +25,8 @@ open class Client {
 
     open var config: [String: String] = [:]
 
+    open var selfSigned: Bool = false
+
     open var http: HTTPClient
 
     private static let boundaryChars =
@@ -139,6 +141,7 @@ open class Client {
     /// @return Client
     ///
     open func setSelfSigned(_ status: Bool = true) -> Client {
+        self.selfSigned = status
         try! http.syncShutdown()
         http = Client.createHTTP(selfSigned: status)
         return self
@@ -411,7 +414,7 @@ open class Client {
         params: inout [String: Any?],
         paramName: String,
         convert: (([String: Any]) -> T)? = nil,
-        onProgress: ((Double) -> Void)? = nil,
+        onProgress: ((UploadProgress) -> Void)? = nil,
         completion: ((Result<T, AppwriteError>) -> Void)? = nil
     ) {
         let file = params[paramName] as! File
@@ -436,7 +439,7 @@ open class Client {
 
         while offset < size {
             let slice = input.readSlice(length: Client.chunkSize)
-                ?? input.readSlice(length: size - offset)
+                ?? input.readSlice(length: Int(size - offset))
             
             params[paramName] = File(
                 name: file.name,
@@ -468,7 +471,13 @@ open class Client {
 
             offset += Client.chunkSize
             headers["x-appwrite-id"] = result["$id"] as? String
-            onProgress?(Double(min(offset, size))/Double(size) * 100.0)
+            onProgress?(UploadProgress(
+                id: result["$id"] as? String ?? "",
+                progress: Double(min(offset, size))/Double(size) * 100.0,
+                sizeUploaded: min(offset, size),
+                chunksTotal: result["chunksTotal"] as? Int ?? -1,
+                chunksUploaded: result["chunksUploaded"] as? Int ?? -1
+            ))
         }
 
         completion?(.success(convert!(result)))
