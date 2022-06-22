@@ -9,7 +9,7 @@ func main() async throws {
         databaseId: "[DATABASE_ID]",
         collectionId: "[COLLECTION_ID]",
         documentId: "[DOCUMENT_ID]",
-        data: 
+        data: [:]
     )
 
     print(String(describing: document)
