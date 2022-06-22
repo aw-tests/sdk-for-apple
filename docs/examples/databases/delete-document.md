@@ -4,12 +4,12 @@ func main() async throws {
     let client = Client()
       .setEndpoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
       .setProject("5df5acd0d48c2") // Your project ID
-    let database = Database(client)
-    let document = try await database.updateDocument(
+    let databases = Databases(client)
+    let result = try await databases.deleteDocument(
+        databaseId: "[DATABASE_ID]",
         collectionId: "[COLLECTION_ID]",
-        documentId: "[DOCUMENT_ID]",
-        data: 
+        documentId: "[DOCUMENT_ID]"
     )
 
-    print(String(describing: document)
+    print(String(describing: result)
 }
