@@ -4,6 +4,14 @@ import NIO
 import AppwriteModels
 
 open class Databases: Service {
+    var databaseId: String
+
+    public init(_ client: Client, _ databaseId: String)
+    {
+        self.databaseId = databaseId
+        super.init(client)
+    }
+
     ///
     /// List Documents
     ///
@@ -20,7 +28,6 @@ open class Databases: Service {
     /// @return array
     ///
     open func listDocuments(
-        databaseId: String,
         collectionId: String,
         queries: [Any]? = nil,
         limit: Int? = nil,
@@ -33,7 +40,7 @@ open class Databases: Service {
         var path: String = "/databases/{databaseId}/collections/{collectionId}/documents"
         path = path.replacingOccurrences(
           of: "{databaseId}",
-          with: databaseId
+          with: self.databaseId
         )
         path = path.replacingOccurrences(
           of: "{collectionId}",
@@ -76,7 +83,6 @@ open class Databases: Service {
     /// @return array
     ///
     open func createDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String,
         data: Any,
@@ -86,7 +92,7 @@ open class Databases: Service {
         var path: String = "/databases/{databaseId}/collections/{collectionId}/documents"
         path = path.replacingOccurrences(
           of: "{databaseId}",
-          with: databaseId
+          with: self.databaseId
         )
         path = path.replacingOccurrences(
           of: "{collectionId}",
@@ -123,14 +129,13 @@ open class Databases: Service {
     /// @return array
     ///
     open func getDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String
     ) async throws -> AppwriteModels.Document {
         var path: String = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
         path = path.replacingOccurrences(
           of: "{databaseId}",
-          with: databaseId
+          with: self.databaseId
         )
         path = path.replacingOccurrences(
           of: "{collectionId}",
@@ -169,17 +174,16 @@ open class Databases: Service {
     /// @return array
     ///
     open func updateDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String,
-        data: Any,
+        data: Any? = nil,
         read: [Any]? = nil,
         write: [Any]? = nil
     ) async throws -> AppwriteModels.Document {
         var path: String = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
         path = path.replacingOccurrences(
           of: "{databaseId}",
-          with: databaseId
+          with: self.databaseId
         )
         path = path.replacingOccurrences(
           of: "{collectionId}",
@@ -219,14 +223,13 @@ open class Databases: Service {
     /// @return array
     ///
     open func deleteDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String
     ) async throws -> Any {
         var path: String = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
         path = path.replacingOccurrences(
           of: "{databaseId}",
-          with: databaseId
+          with: self.databaseId
         )
         path = path.replacingOccurrences(
           of: "{collectionId}",
@@ -251,7 +254,6 @@ open class Databases: Service {
     ///
     /// List Documents
     ///
-    /// @param String databaseId
     /// @param String collectionId
     /// @param [Any] queries
     /// @param Int limit
@@ -265,7 +267,6 @@ open class Databases: Service {
     ///
     @available(*, deprecated, message: "Use the async overload instead")
     open func listDocuments(
-        databaseId: String,
         collectionId: String,
         queries: [Any]? = nil,
         limit: Int? = nil,
@@ -279,7 +280,6 @@ open class Databases: Service {
         Task {
             do {
                 let result = try await listDocuments(
-                    databaseId: databaseId,
                     collectionId: collectionId,
                     queries: queries,
                     limit: limit,
@@ -299,7 +299,6 @@ open class Databases: Service {
     ///
     /// Create Document
     ///
-    /// @param String databaseId
     /// @param String collectionId
     /// @param String documentId
     /// @param Any data
@@ -310,7 +309,6 @@ open class Databases: Service {
     ///
     @available(*, deprecated, message: "Use the async overload instead")
     open func createDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String,
         data: Any,
@@ -321,7 +319,6 @@ open class Databases: Service {
         Task {
             do {
                 let result = try await createDocument(
-                    databaseId: databaseId,
                     collectionId: collectionId,
                     documentId: documentId,
                     data: data,
@@ -338,7 +335,6 @@ open class Databases: Service {
     ///
     /// Get Document
     ///
-    /// @param String databaseId
     /// @param String collectionId
     /// @param String documentId
     /// @throws Exception
@@ -346,7 +342,6 @@ open class Databases: Service {
     ///
     @available(*, deprecated, message: "Use the async overload instead")
     open func getDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String,
         completion: ((Result<AppwriteModels.Document, AppwriteError>) -> Void)? = nil
@@ -354,7 +349,6 @@ open class Databases: Service {
         Task {
             do {
                 let result = try await getDocument(
-                    databaseId: databaseId,
                     collectionId: collectionId,
                     documentId: documentId
                 )
@@ -368,7 +362,6 @@ open class Databases: Service {
     ///
     /// Update Document
     ///
-    /// @param String databaseId
     /// @param String collectionId
     /// @param String documentId
     /// @param Any data
@@ -379,10 +372,9 @@ open class Databases: Service {
     ///
     @available(*, deprecated, message: "Use the async overload instead")
     open func updateDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String,
-        data: Any,
+        data: Any? = nil,
         read: [Any]? = nil,
         write: [Any]? = nil,
         completion: ((Result<AppwriteModels.Document, AppwriteError>) -> Void)? = nil
@@ -390,7 +382,6 @@ open class Databases: Service {
         Task {
             do {
                 let result = try await updateDocument(
-                    databaseId: databaseId,
                     collectionId: collectionId,
                     documentId: documentId,
                     data: data,
@@ -407,7 +398,6 @@ open class Databases: Service {
     ///
     /// Delete Document
     ///
-    /// @param String databaseId
     /// @param String collectionId
     /// @param String documentId
     /// @throws Exception
@@ -415,7 +405,6 @@ open class Databases: Service {
     ///
     @available(*, deprecated, message: "Use the async overload instead")
     open func deleteDocument(
-        databaseId: String,
         collectionId: String,
         documentId: String,
         completion: ((Result<Any, AppwriteError>) -> Void)? = nil
@@ -423,7 +412,6 @@ open class Databases: Service {
         Task {
             do {
                 let result = try await deleteDocument(
-                    databaseId: databaseId,
                     collectionId: collectionId,
                     documentId: documentId
                 )
