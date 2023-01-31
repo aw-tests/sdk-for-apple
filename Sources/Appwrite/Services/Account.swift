@@ -15,6 +15,7 @@ open class Account: Service {
     /// @return array
     ///
     open func get<T>(
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account"
 
@@ -48,6 +49,7 @@ open class Account: Service {
     open func get(
     ) async throws -> AppwriteModels.Account<[String: AnyCodable]> {
         return try await get(
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -72,7 +74,8 @@ open class Account: Service {
         userId: String,
         email: String,
         password: String,
-        name: String? = nil
+        name: String? = nil,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account"
 
@@ -128,6 +131,7 @@ open class Account: Service {
             email: email,
             password: password,
             name: name
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -150,7 +154,8 @@ open class Account: Service {
     ///
     open func updateEmail<T>(
         email: String,
-        password: String
+        password: String,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account/email"
 
@@ -200,6 +205,7 @@ open class Account: Service {
         return try await updateEmail(
             email: email,
             password: password
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -284,7 +290,8 @@ open class Account: Service {
     /// @return array
     ///
     open func updateName<T>(
-        name: String
+        name: String,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account/name"
 
@@ -323,6 +330,7 @@ open class Account: Service {
     ) async throws -> AppwriteModels.Account<[String: AnyCodable]> {
         return try await updateName(
             name: name
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -340,7 +348,8 @@ open class Account: Service {
     ///
     open func updatePassword<T>(
         password: String,
-        oldPassword: String? = nil
+        oldPassword: String? = nil,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account/password"
 
@@ -385,6 +394,7 @@ open class Account: Service {
         return try await updatePassword(
             password: password,
             oldPassword: oldPassword
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -404,7 +414,8 @@ open class Account: Service {
     ///
     open func updatePhone<T>(
         phone: String,
-        password: String
+        password: String,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account/phone"
 
@@ -451,6 +462,7 @@ open class Account: Service {
         return try await updatePhone(
             phone: phone,
             password: password
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -463,6 +475,7 @@ open class Account: Service {
     /// @return array
     ///
     open func getPrefs<T>(
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Preferences<T> {
         let path: String = "/account/prefs"
 
@@ -496,6 +509,7 @@ open class Account: Service {
     open func getPrefs(
     ) async throws -> AppwriteModels.Preferences<[String: AnyCodable]> {
         return try await getPrefs(
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -511,7 +525,8 @@ open class Account: Service {
     /// @return array
     ///
     open func updatePrefs<T>(
-        prefs: T
+        prefs: T,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account/prefs"
 
@@ -552,6 +567,7 @@ open class Account: Service {
     ) async throws -> AppwriteModels.Account<[String: AnyCodable]> {
         return try await updatePrefs(
             prefs: prefs
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -751,6 +767,9 @@ open class Account: Service {
     ///
     /// Allow the user to login into their account by providing a valid email and
     /// password combination. This route will create a new session for the user.
+    /// 
+    /// A user is limited to 10 active sessions at a time by default. [Learn more
+    /// about session limits](/docs/authentication#limits).
     ///
     /// @param String email
     /// @param String password
@@ -799,6 +818,9 @@ open class Account: Service {
     /// address is valid for 1 hour. If you are on a mobile device you can leave
     /// the URL parameter empty, so that the login completion will be handled by
     /// your Appwrite instance by default.
+    /// 
+    /// A user is limited to 10 active sessions at a time by default. [Learn more
+    /// about session limits](/docs/authentication#limits).
     ///
     /// @param String userId
     /// @param String email
@@ -897,7 +919,10 @@ open class Account: Service {
     /// attempt to look for a user with the same email address as the email
     /// received from the OAuth2 provider and attach the new session to the
     /// existing user. If no matching user is found - the server will create a new
-    /// user..
+    /// user.
+    /// 
+    /// A user is limited to 10 active sessions at a time by default. [Learn more
+    /// about session limits](/docs/authentication#limits).
     /// 
     ///
     /// @param String provider
@@ -913,7 +938,7 @@ open class Account: Service {
         success: String? = nil,
         failure: String? = nil,
         scopes: [String]? = nil
-    ) async throws -> Bool {
+    ) throws -> Bool {
         let path: String = "/account/sessions/oauth2/{provider}"
             .replacingOccurrences(of: "{provider}", with: provider)
 
@@ -947,6 +972,9 @@ open class Account: Service {
     /// /account/sessions/phone](/docs/client/account#accountUpdatePhoneSession)
     /// endpoint to complete the login process. The secret sent to the user's phone
     /// is valid for 15 minutes.
+    /// 
+    /// A user is limited to 10 active sessions at a time by default. [Learn more
+    /// about session limits](/docs/authentication#limits).
     ///
     /// @param String userId
     /// @param String phone
@@ -1136,6 +1164,7 @@ open class Account: Service {
     /// @return array
     ///
     open func updateStatus<T>(
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Account<T> {
         let path: String = "/account/status"
 
@@ -1171,6 +1200,7 @@ open class Account: Service {
     open func updateStatus(
     ) async throws -> AppwriteModels.Account<[String: AnyCodable]> {
         return try await updateStatus(
+            nestedType: [String: AnyCodable].self
         )
     }
 

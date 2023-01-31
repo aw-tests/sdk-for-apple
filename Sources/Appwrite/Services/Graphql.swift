@@ -9,47 +9,6 @@ open class Graphql: Service {
     ///
     /// GraphQL Endpoint
     ///
-    /// Execute a GraphQL query.
-    ///
-    /// @param String query
-    /// @param String operationName
-    /// @param String variables
-    /// @throws Exception
-    /// @return array
-    ///
-    open func 63a0228e7e93a(
-        query: String,
-        operationName: String? = nil,
-        variables: String? = nil
-    ) async throws -> Any {
-        let path: String = "/graphql"
-
-        let params: [String: Any?] = [
-            "query": query,
-            "operationName": operationName,
-            "variables": variables
-        ]
-
-        let headers: [String: String] = [
-            "content-type": "application/json"
-        ]
-
-        let converter: (Any) -> Any = { response in
-            return response
-        }
-
-        return try await client.call(
-            method: "GET",
-            path: path,
-            headers: headers,
-            params: params,
-            converter: converter
-        )
-    }
-
-    ///
-    /// GraphQL Endpoint
-    ///
     /// Execute a GraphQL mutation.
     ///
     /// @param Any query

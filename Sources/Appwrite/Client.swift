@@ -23,7 +23,7 @@ open class Client {
         "x-sdk-name": "Apple",
         "x-sdk-platform": "client",
         "x-sdk-language": "apple",
-        "x-sdk-version": "1.1.0",
+        "x-sdk-version": "1.2.1",
         "X-Appwrite-Response-Format": "1.0.0"
     ]
 
@@ -446,7 +446,28 @@ open class Client {
         _ request: inout HTTPClientRequest,
         with params: [String: Any?] = [:]
     ) throws {
-        let json = try JSONSerialization.data(withJSONObject: params, options: [])
+        var encodedParams = [String:Any]()
+
+        for (key, param) in params {
+            if param is String
+                || param is Int
+                || param is Float
+                || param is Bool
+                || param is [String]
+                || param is [Int]
+                || param is [Float]
+                || param is [Bool]
+                || param is [String: Any]
+                || param is [Int: Any]
+                || param is [Float: Any]
+                || param is [Bool: Any] {
+                encodedParams[key] = param
+            } else {
+                encodedParams[key] = try! (param as! Encodable).toJson()
+            }
+        }
+
+        let json = try JSONSerialization.data(withJSONObject: encodedParams, options: [])
 
         request.body = .bytes(json)
     }

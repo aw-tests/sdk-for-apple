@@ -21,7 +21,8 @@ open class Databases: Service {
     open func listDocuments<T>(
         databaseId: String,
         collectionId: String,
-        queries: [String]? = nil
+        queries: [String]? = nil,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.DocumentList<T> {
         let path: String = "/databases/{databaseId}/collections/{collectionId}/documents"
             .replacingOccurrences(of: "{databaseId}", with: databaseId)
@@ -69,6 +70,7 @@ open class Databases: Service {
             databaseId: databaseId,
             collectionId: collectionId,
             queries: queries
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -93,7 +95,8 @@ open class Databases: Service {
         collectionId: String,
         documentId: String,
         data: T,
-        permissions: [String]? = nil
+        permissions: [String]? = nil,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Document<T> {
         let path: String = "/databases/{databaseId}/collections/{collectionId}/documents"
             .replacingOccurrences(of: "{databaseId}", with: databaseId)
@@ -151,6 +154,7 @@ open class Databases: Service {
             documentId: documentId,
             data: data,
             permissions: permissions
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -169,7 +173,8 @@ open class Databases: Service {
     open func getDocument<T>(
         databaseId: String,
         collectionId: String,
-        documentId: String
+        documentId: String,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Document<T> {
         let path: String = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
             .replacingOccurrences(of: "{databaseId}", with: databaseId)
@@ -216,6 +221,7 @@ open class Databases: Service {
             databaseId: databaseId,
             collectionId: collectionId,
             documentId: documentId
+            nestedType: [String: AnyCodable].self
         )
     }
 
@@ -238,7 +244,8 @@ open class Databases: Service {
         collectionId: String,
         documentId: String,
         data: T? = nil,
-        permissions: [String]? = nil
+        permissions: [String]? = nil,
+        nestedType: T.Type
     ) async throws -> AppwriteModels.Document<T> {
         let path: String = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
             .replacingOccurrences(of: "{databaseId}", with: databaseId)
@@ -294,6 +301,7 @@ open class Databases: Service {
             documentId: documentId,
             data: data,
             permissions: permissions
+            nestedType: [String: AnyCodable].self
         )
     }
 
