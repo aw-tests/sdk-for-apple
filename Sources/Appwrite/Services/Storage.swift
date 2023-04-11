@@ -1,6 +1,7 @@
 import AsyncHTTPClient
 import Foundation
 import NIO
+import JSONCodable
 import AppwriteModels
 
 /// The Storage service allows you to manage your project files.
@@ -310,7 +311,8 @@ open class Storage: Service {
             "opacity": opacity,
             "rotation": rotation,
             "background": background,
-            "output": output
+            "output": output,
+            "project": client.config["project"]
         ]
 
         return try await client.call(

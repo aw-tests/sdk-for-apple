@@ -1,6 +1,7 @@
 import AsyncHTTPClient
 import Foundation
 import NIO
+import JSONCodable
 import AppwriteModels
 
 /// The Databases service allows you to create structured collections of documents, query and filter lists of documents
@@ -69,7 +70,7 @@ open class Databases: Service {
         return try await listDocuments(
             databaseId: databaseId,
             collectionId: collectionId,
-            queries: queries
+            queries: queries,
             nestedType: [String: AnyCodable].self
         )
     }
@@ -94,7 +95,7 @@ open class Databases: Service {
         databaseId: String,
         collectionId: String,
         documentId: String,
-        data: T,
+        data: Any,
         permissions: [String]? = nil,
         nestedType: T.Type
     ) async throws -> AppwriteModels.Document<T> {
@@ -153,7 +154,7 @@ open class Databases: Service {
             collectionId: collectionId,
             documentId: documentId,
             data: data,
-            permissions: permissions
+            permissions: permissions,
             nestedType: [String: AnyCodable].self
         )
     }
@@ -167,6 +168,7 @@ open class Databases: Service {
     /// @param String databaseId
     /// @param String collectionId
     /// @param String documentId
+    /// @param [String] queries
     /// @throws Exception
     /// @return array
     ///
@@ -174,6 +176,7 @@ open class Databases: Service {
         databaseId: String,
         collectionId: String,
         documentId: String,
+        queries: [String]? = nil,
         nestedType: T.Type
     ) async throws -> AppwriteModels.Document<T> {
         let path: String = "/databases/{databaseId}/collections/{collectionId}/documents/{documentId}"
@@ -181,7 +184,9 @@ open class Databases: Service {
             .replacingOccurrences(of: "{collectionId}", with: collectionId)
             .replacingOccurrences(of: "{documentId}", with: documentId)
 
-        let params: [String: Any] = [:]
+        let params: [String: Any?] = [
+            "queries": queries
+        ]
 
         let headers: [String: String] = [
             "content-type": "application/json"
@@ -209,18 +214,21 @@ open class Databases: Service {
     /// @param String databaseId
     /// @param String collectionId
     /// @param String documentId
+    /// @param [String] queries
     /// @throws Exception
     /// @return array
     ///
     open func getDocument(
         databaseId: String,
         collectionId: String,
-        documentId: String
+        documentId: String,
+        queries: [String]? = nil
     ) async throws -> AppwriteModels.Document<[String: AnyCodable]> {
         return try await getDocument(
             databaseId: databaseId,
             collectionId: collectionId,
-            documentId: documentId
+            documentId: documentId,
+            queries: queries,
             nestedType: [String: AnyCodable].self
         )
     }
@@ -243,7 +251,7 @@ open class Databases: Service {
         databaseId: String,
         collectionId: String,
         documentId: String,
-        data: T? = nil,
+        data: Any? = nil,
         permissions: [String]? = nil,
         nestedType: T.Type
     ) async throws -> AppwriteModels.Document<T> {
@@ -300,7 +308,7 @@ open class Databases: Service {
             collectionId: collectionId,
             documentId: documentId,
             data: data,
-            permissions: permissions
+            permissions: permissions,
             nestedType: [String: AnyCodable].self
         )
     }

@@ -4,9 +4,9 @@ let client = Client()
     .setEndpoint("https://[HOSTNAME_OR_IP]/v1") // Your API Endpoint
     .setProject("5df5acd0d48c2") // Your project ID
 
-let graphql = Graphql(client)
+let teams = Teams(client)
 
-let any = try await graphql.63a025ceb6ac4(
-    query: "[QUERY]"
+let preferences = try await teams.getPrefs(
+    teamId: "[TEAM_ID]"
 )
 
