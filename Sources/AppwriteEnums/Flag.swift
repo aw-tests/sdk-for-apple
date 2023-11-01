@@ -1,200 +1,200 @@
 import Foundation
 
 public enum Flag: String, Codable {
-    case afghanistan
-    case angola
-    case albania
-    case andorra
-    case unitedArabEmirates
-    case argentina
-    case armenia
-    case antiguaAndBarbuda
-    case australia
-    case austria
-    case azerbaijan
-    case burundi
-    case belgium
-    case benin
-    case burkinaFaso
-    case bangladesh
-    case bulgaria
-    case bahrain
-    case bahamas
-    case bosniaAndHerzegovina
-    case belarus
-    case belize
-    case bolivia
-    case brazil
-    case barbados
-    case bruneiDarussalam
-    case bhutan
-    case botswana
-    case centralAfricanRepublic
-    case canada
-    case switzerland
-    case chile
-    case china
-    case cTeDIvoire
-    case cameroon
-    case democraticRepublicOfTheCongo
-    case republicOfTheCongo
-    case colombia
-    case comoros
-    case capeVerde
-    case costaRica
-    case cuba
-    case cyprus
-    case czechRepublic
-    case germany
-    case djibouti
-    case dominica
-    case denmark
-    case dominicanRepublic
-    case algeria
-    case ecuador
-    case egypt
-    case eritrea
-    case spain
-    case estonia
-    case ethiopia
-    case finland
-    case fiji
-    case france
-    case micronesiaFederatedStatesOf
-    case gabon
-    case unitedKingdom
-    case georgia
-    case ghana
-    case guinea
-    case gambia
-    case guineaBissau
-    case equatorialGuinea
-    case greece
-    case grenada
-    case guatemala
-    case guyana
-    case honduras
-    case croatia
-    case haiti
-    case hungary
-    case indonesia
-    case india
-    case ireland
-    case iranIslamicRepublicOf
-    case iraq
-    case iceland
-    case israel
-    case italy
-    case jamaica
-    case jordan
-    case japan
-    case kazakhstan
-    case kenya
-    case kyrgyzstan
-    case cambodia
-    case kiribati
-    case saintKittsAndNevis
-    case southKorea
-    case kuwait
-    case laoPeopleSDemocraticRepublic
-    case lebanon
-    case liberia
-    case libya
-    case saintLucia
-    case liechtenstein
-    case sriLanka
-    case lesotho
-    case lithuania
-    case luxembourg
-    case latvia
-    case morocco
-    case monaco
-    case moldova
-    case madagascar
-    case maldives
-    case mexico
-    case marshallIslands
-    case northMacedonia
-    case mali
-    case malta
-    case myanmar
-    case montenegro
-    case mongolia
-    case mozambique
-    case mauritania
-    case mauritius
-    case malawi
-    case malaysia
-    case namibia
-    case niger
-    case nigeria
-    case nicaragua
-    case netherlands
-    case norway
-    case nepal
-    case nauru
-    case newZealand
-    case oman
-    case pakistan
-    case panama
-    case peru
-    case philippines
-    case palau
-    case papuaNewGuinea
-    case poland
-    case northKorea
-    case portugal
-    case paraguay
-    case qatar
-    case romania
-    case russia
-    case rwanda
-    case saudiArabia
-    case sudan
-    case senegal
-    case singapore
-    case solomonIslands
-    case sierraLeone
-    case elSalvador
-    case sanMarino
-    case somalia
-    case serbia
-    case southSudan
-    case saoTomeAndPrincipe
-    case suriname
-    case slovakia
-    case slovenia
-    case sweden
-    case eswatini
-    case seychelles
-    case syria
-    case chad
-    case togo
-    case thailand
-    case tajikistan
-    case turkmenistan
-    case timorLeste
-    case tonga
-    case trinidadAndTobago
-    case tunisia
-    case turkey
-    case tuvalu
-    case tanzania
-    case uganda
-    case ukraine
-    case uruguay
-    case unitedStates
-    case uzbekistan
-    case vaticanCity
-    case saintVincentAndTheGrenadines
-    case venezuela
-    case vietnam
-    case vanuatu
-    case samoa
-    case yemen
-    case southAfrica
-    case zambia
-    case zimbabwe
+    case afghanistan = "af"
+    case angola = "ao"
+    case albania = "al"
+    case andorra = "ad"
+    case unitedArabEmirates = "ae"
+    case argentina = "ar"
+    case armenia = "am"
+    case antiguaandBarbuda = "ag"
+    case australia = "au"
+    case austria = "at"
+    case azerbaijan = "az"
+    case burundi = "bi"
+    case belgium = "be"
+    case benin = "bj"
+    case burkinaFaso = "bf"
+    case bangladesh = "bd"
+    case bulgaria = "bg"
+    case bahrain = "bh"
+    case bahamas = "bs"
+    case bosniaandHerzegovina = "ba"
+    case belarus = "by"
+    case belize = "bz"
+    case bolivia = "bo"
+    case brazil = "br"
+    case barbados = "bb"
+    case bruneiDarussalam = "bn"
+    case bhutan = "bt"
+    case botswana = "bw"
+    case centralAfricanRepublic = "cf"
+    case canada = "ca"
+    case switzerland = "ch"
+    case chile = "cl"
+    case china = "cn"
+    case ctedIvoire = "ci"
+    case cameroon = "cm"
+    case democraticRepublicoftheCongo = "cd"
+    case republicoftheCongo = "cg"
+    case colombia = "co"
+    case comoros = "km"
+    case capeVerde = "cv"
+    case costaRica = "cr"
+    case cuba = "cu"
+    case cyprus = "cy"
+    case czechRepublic = "cz"
+    case germany = "de"
+    case djibouti = "dj"
+    case dominica = "dm"
+    case denmark = "dk"
+    case dominicanRepublic = "do"
+    case algeria = "dz"
+    case ecuador = "ec"
+    case egypt = "eg"
+    case eritrea = "er"
+    case spain = "es"
+    case estonia = "ee"
+    case ethiopia = "et"
+    case finland = "fi"
+    case fiji = "fj"
+    case france = "fr"
+    case micronesiaFederatedStatesof = "fm"
+    case gabon = "ga"
+    case unitedKingdom = "gb"
+    case georgia = "ge"
+    case ghana = "gh"
+    case guinea = "gn"
+    case gambia = "gm"
+    case guineaBissau = "gw"
+    case equatorialGuinea = "gq"
+    case greece = "gr"
+    case grenada = "gd"
+    case guatemala = "gt"
+    case guyana = "gy"
+    case honduras = "hn"
+    case croatia = "hr"
+    case haiti = "ht"
+    case hungary = "hu"
+    case indonesia = "id"
+    case india = "in"
+    case ireland = "ie"
+    case iranIslamicRepublicof = "ir"
+    case iraq = "iq"
+    case iceland = "is"
+    case israel = "il"
+    case italy = "it"
+    case jamaica = "jm"
+    case jordan = "jo"
+    case japan = "jp"
+    case kazakhstan = "kz"
+    case kenya = "ke"
+    case kyrgyzstan = "kg"
+    case cambodia = "kh"
+    case kiribati = "ki"
+    case saintKittsandNevis = "kn"
+    case southKorea = "kr"
+    case kuwait = "kw"
+    case laoPeoplesDemocraticRepublic = "la"
+    case lebanon = "lb"
+    case liberia = "lr"
+    case libya = "ly"
+    case saintLucia = "lc"
+    case liechtenstein = "li"
+    case sriLanka = "lk"
+    case lesotho = "ls"
+    case lithuania = "lt"
+    case luxembourg = "lu"
+    case latvia = "lv"
+    case morocco = "ma"
+    case monaco = "mc"
+    case moldova = "md"
+    case madagascar = "mg"
+    case maldives = "mv"
+    case mexico = "mx"
+    case marshallIslands = "mh"
+    case northMacedonia = "mk"
+    case mali = "ml"
+    case malta = "mt"
+    case myanmar = "mm"
+    case montenegro = "me"
+    case mongolia = "mn"
+    case mozambique = "mz"
+    case mauritania = "mr"
+    case mauritius = "mu"
+    case malawi = "mw"
+    case malaysia = "my"
+    case namibia = "na"
+    case niger = "ne"
+    case nigeria = "ng"
+    case nicaragua = "ni"
+    case netherlands = "nl"
+    case norway = "no"
+    case nepal = "np"
+    case nauru = "nr"
+    case newZealand = "nz"
+    case oman = "om"
+    case pakistan = "pk"
+    case panama = "pa"
+    case peru = "pe"
+    case philippines = "ph"
+    case palau = "pw"
+    case papuaNewGuinea = "pg"
+    case poland = "pl"
+    case northKorea = "kp"
+    case portugal = "pt"
+    case paraguay = "py"
+    case qatar = "qa"
+    case romania = "ro"
+    case russia = "ru"
+    case rwanda = "rw"
+    case saudiArabia = "sa"
+    case sudan = "sd"
+    case senegal = "sn"
+    case singapore = "sg"
+    case solomonIslands = "sb"
+    case sierraLeone = "sl"
+    case elSalvador = "sv"
+    case sanMarino = "sm"
+    case somalia = "so"
+    case serbia = "rs"
+    case southSudan = "ss"
+    case saoTomeandPrincipe = "st"
+    case suriname = "sr"
+    case slovakia = "sk"
+    case slovenia = "si"
+    case sweden = "se"
+    case eswatini = "sz"
+    case seychelles = "sc"
+    case syria = "sy"
+    case chad = "td"
+    case togo = "tg"
+    case thailand = "th"
+    case tajikistan = "tj"
+    case turkmenistan = "tm"
+    case timorLeste = "tl"
+    case tonga = "to"
+    case trinidadandTobago = "tt"
+    case tunisia = "tn"
+    case turkey = "tr"
+    case tuvalu = "tv"
+    case tanzania = "tz"
+    case uganda = "ug"
+    case ukraine = "ua"
+    case uruguay = "uy"
+    case unitedStates = "us"
+    case uzbekistan = "uz"
+    case vaticanCity = "va"
+    case saintVincentandtheGrenadines = "vc"
+    case venezuela = "ve"
+    case vietnam = "vn"
+    case vanuatu = "vu"
+    case samoa = "ws"
+    case yemen = "ye"
+    case southAfrica = "za"
+    case zambia = "zm"
+    case zimbabwe = "zw"
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()

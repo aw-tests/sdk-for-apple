@@ -8,6 +8,6 @@ let client = Client()
 let account = Account(client)
 
 let success = try await account.createOAuth2Session(
-    provider: Provider.amazon
+    provider: .amazon
 )
 

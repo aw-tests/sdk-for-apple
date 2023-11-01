@@ -1,11 +1,11 @@
 import Foundation
 
 public enum ImageFormat: String, Codable {
-    case jpg
-    case jpeg
-    case gif
-    case png
-    case webp
+    case jpg = "jpg"
+    case jpeg = "jpeg"
+    case gif = "gif"
+    case png = "png"
+    case webp = "webp"
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()

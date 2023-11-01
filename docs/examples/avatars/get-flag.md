@@ -7,7 +7,7 @@ let client = Client()
 
 let avatars = Avatars(client)
 
-let byteBuffer = try await avatars.getFlag(
-    code: Flag.af
+let bytes = try await avatars.getFlag(
+    code: .afghanistan
 )
 

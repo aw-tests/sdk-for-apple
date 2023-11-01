@@ -7,7 +7,7 @@ let client = Client()
 
 let avatars = Avatars(client)
 
-let byteBuffer = try await avatars.getCreditCard(
-    code: CreditCard.amex
+let bytes = try await avatars.getCreditCard(
+    code: .americanExpress
 )
 

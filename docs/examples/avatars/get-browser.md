@@ -7,7 +7,7 @@ let client = Client()
 
 let avatars = Avatars(client)
 
-let byteBuffer = try await avatars.getBrowser(
-    code: Browser.aa
+let bytes = try await avatars.getBrowser(
+    code: .avantBrowser
 )
 
